@@ -1,0 +1,326 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Thought Journal</title>
+    <link rel="stylesheet" href="ThoughtJ.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+</head>
+<body>
+
+    <!--NavBar-->
+
+    <nav class="navbar">
+        <a href="Home.html" class="logo">Mental<span>Climb</span></a>
+        <ul class="nav-links">
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="Home.html#about_us">About Us</a></li>
+            <li><a href="Healthcare_services.html">Services</a></li>
+            <li><a href="DrChatbot.html">Chat assistant</a></li>
+            <li class="Bstyle"><a class="signInlink" href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <!--Main-->
+
+    <div class="title">
+        <h2>Thought Journal</h2>
+        <div class="underline"></div>
+    </div>
+
+    <div class="text-box">
+        <form action="" id="thoughtj">
+            <textarea id="txt" rows="4" placeholder="whats on your mind today?"></textarea>
+            <div class="create">
+                <button type="button" class="btn btn-primary" onclick="clickbutton();  return false;"
+                        style="padding-left: 30px; padding-right: 30px;">
+                    Create
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div id="data" class="text-box"></div>
+
+    <!--Footer-->
+
+    <div class="footer">
+        <p>Duffield Ln, Staffordshire DE13 8SH | Phone: 01283 575303 | Email: MentalClimb@hotmail.com</p>
+        <p>Copyright © 2023 MentalClimb</p>
+    </div>
+
+    <!--JavaScript-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <!--<script type="module" src="./ThoughtJ.js"></script> -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js'
+
+        // If you enabled Analytics in your project, add the Firebase SDK for Google Analytics
+        import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-analytics.js'
+
+        // Add Firebase products that you want to use
+        import { getAuth } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js'
+        import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js'
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAGr5TtXTukeQU7QcrDuvLjcN_ZfTyzSo0",
+            authDomain: "thought-journal-23ff8.firebaseapp.com",
+            databaseURL: "https://thought-journal-23ff8-default-rtdb.firebaseio.com",
+            projectId: "thought-journal-23ff8",
+            storageBucket: "thought-journal-23ff8.appspot.com",
+            messagingSenderId: "119645921234",
+            appId: "1:119645921234:web:7e110e23f790f57c55f20b",
+            measurementId: "G-MD548H48G4"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+        const dbRef = firebase.database().ref('journalData');
+        const auth = firebase.auth();
+        var userId = auth.userId;
+        console.log(`userId == ${userId}`);
+
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                // User logged in already or has just logged in.
+                console.log(user.uid);
+                userId = user.uid;
+            } else {
+                // User not logged in or has just logged out.
+            }
+        });
+
+
+        console.log(dbRef.once('value'));
+        dbRef.once('value', (snapshot) => {
+            console.log('snapshot called')
+            const data = snapshot.val();
+            const findUser = userId;
+            console.log(`findUser = ${findUser}`);
+            var keyNode = Object.keys(data);
+            var newKeys = Object.values(data);
+            for (var i = 0; i < newKeys.length; i++) {
+                console.log(newKeys[i]);
+
+                const newValue = Object.values(newKeys[i]);
+                const actualKey = keyNode[i];
+                const idValue = newKeys[i].timeStamp;
+                const msgValue = newKeys[i].msg;
+                const journalId = newKeys[i].userId;
+                if (journalId == findUser) {
+                    const timeStampValue = newKeys[i].timeStamp;
+                    const d = new Date()
+                    var timeStamp = timeStampValue;
+                    let timeStampToString = timeStamp.toString();
+                    var finalTimeStamp = timeStampToString.slice(0, -3);
+
+                    const newCard = document.createElement("div");
+                    newCard.className = `card ${actualKey}`;
+                    const newNode = document.createElement("p");
+                    const textNode = document.createTextNode(msgValue);
+
+                    const dateTxt = document.createElement("date")
+                    dateTxt.style.marginRight = '2px';
+                    const dataValue = document.createTextNode(new Date(finalTimeStamp * 1000).toLocaleTimeString());
+                    const divider = document.createTextNode(" , ");
+
+
+                    const dateTxt1 = document.createElement("date")
+                    dateTxt1.style.marginLeft = '2px';
+                    const dataValue1 = document.createTextNode(new Date(finalTimeStamp * 1000).toLocaleDateString());
+
+                    //Delete button
+
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.style.marginLeft = '475px';
+                    deleteBtn.style.width = '90px';
+                    deleteBtn.className = 'btn btn-danger';
+                    const deleteBtnTxt = document.createTextNode('Delete');
+
+                    // This code is what allows the btn clicking to work
+                    deleteBtn.onclick = function () {
+                        console.log(`Actual Key == ${actualKey}`);
+                        deleteData(actualKey);
+                    };
+
+                    deleteBtn.appendChild(deleteBtnTxt);
+
+                    dateTxt.appendChild(dataValue);
+                    dateTxt1.appendChild(dataValue1);
+
+                    newCard.appendChild(textNode);
+                    newCard.appendChild(newNode);
+
+                    newCard.appendChild(dateTxt);
+                    newCard.appendChild(divider);
+                    newCard.appendChild(dateTxt1);
+
+                    newCard.appendChild(deleteBtn);
+
+
+                    const list = document.getElementById("data");
+                    list.insertBefore(newCard, list.children[0]);
+                }
+
+            }
+
+
+
+        });
+
+        function createThought(e) {
+            e.preventDefault();
+
+            //GetValues
+            var txt = getElementVal('txt')
+
+            console.log(txt);
+        }
+
+        function getInputVal() {
+
+            return document.getElementById('txt').value;
+        }
+
+        //functionality
+        const getElementVal = (id) => {
+            return document.getElementbyId(id).value
+        }
+
+        function _(id) {
+            return document.getElementById(id)
+        }
+
+        window.clickbutton = () => {
+            const d = new Date()
+            let timeStampDate = Date.now();
+            var thoughtjDB = firebase.database().ref(`journalData/${timeStampDate}`);
+            thoughtjDB.push()
+            thoughtjDB.set({ msg: getInputVal(), userId: userId, timeStamp: Date.now() });
+            const newCard = document.createElement("div");
+            newCard.className = `card ${timeStampDate}`;
+            const newNode = document.createElement("p");
+            const textNode = document.createTextNode(getInputVal());
+
+            const dateTxt = document.createElement("date")
+            dateTxt.style.marginRight = '2px';
+            const dataValue = document.createTextNode(d.toLocaleTimeString());
+            const divider = document.createTextNode(" , ");
+
+
+            const dateTxt1 = document.createElement("date")
+            dateTxt1.style.marginLeft = '2px';
+            const dataValue1 = document.createTextNode(d.toLocaleDateString());
+
+            //delete button
+
+            const deleteBtn = document.createElement('button');
+            const deleteBtnTxt = document.createTextNode('Delete');
+            deleteBtn.style.marginLeft = '475px';
+            deleteBtn.style.width = '90px';
+            deleteBtn.className = 'btn btn-danger';
+
+            deleteBtn.onclick = function () {
+                console.log(`deletedatatime == ${timeStampDate}`);
+                deleteData(timeStampDate);
+            };
+
+
+            deleteBtn.appendChild(deleteBtnTxt);
+
+
+
+            //newNode.appendChild(textNode);
+            dateTxt.appendChild(dataValue);
+            dateTxt1.appendChild(dataValue1);
+
+            newCard.appendChild(textNode);
+            newCard.appendChild(newNode);
+
+            newCard.appendChild(dateTxt);
+            newCard.appendChild(divider);
+            newCard.appendChild(dateTxt1);
+
+            newCard.appendChild(deleteBtn);
+
+
+            const list = document.getElementById("data");
+            list.insertBefore(newCard, list.children[0]);
+
+        }
+
+        function deleteData(journalId) {
+            console.log(`new function == ${journalId}`);
+            const jIdRef = firebase.database().ref(`journalData/${journalId}`);
+            console.log(`journalData/${journalId}`);
+            jIdRef.remove();
+            const journalColumn = document.getElementsByClassName(journalId);
+            console.log(`journalColumn == ${journalColumn[0].className}`);
+            journalColumn[0].remove();
+
+        }
+
+
+    </script>
+
+    <!--JavaScript-->
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js'
+
+        // If you enabled Analytics in your project, add the Firebase SDK for Google Analytics
+        import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-analytics.js'
+
+        // Add Firebase products that you want to use
+        import { getAuth, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js'
+        import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js'
+
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAGr5TtXTukeQU7QcrDuvLjcN_ZfTyzSo0",
+            authDomain: "thought-journal-23ff8.firebaseapp.com",
+            databaseURL: "https://thought-journal-23ff8-default-rtdb.firebaseio.com",
+            projectId: "thought-journal-23ff8",
+            storageBucket: "thought-journal-23ff8.appspot.com",
+            messagingSenderId: "119645921234",
+            appId: "1:119645921234:web:7e110e23f790f57c55f20b",
+            measurementId: "G-MD548H48G4"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+
+        const signinBtn = document.getElementsByClassName(`signInlink`)[0]
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // user is logged in
+                signinBtn.innerHTML = `Log out`
+                signinBtn.href = ``
+            }
+        });
+
+        signinBtn.addEventListener('click', (e) => {
+            console.log(`logged out`);
+            if (signinBtn.innerText == `Log out`) {
+                signOut(auth).then(() => {
+                    // Sign-out successful.
+                    signinBtn.innerHTML = `Login`
+                    signinBtn.href = `Login.html`
+                }).catch((error) => {
+                    // An error happened.
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+
+                    alert(errorMessage)
+                });
+            }
+        })
+
+    </script>
+
+    <script src="./initialData.js"></script>
+</body>
+</html>

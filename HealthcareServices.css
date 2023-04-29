@@ -1,0 +1,154 @@
+﻿*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins' , 'Global Sans Serif';
+}
+
+body, html {
+    background-color: #ecf5ff;
+    overflow-x: hidden;
+}
+
+/*NavBar*/
+
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 20px;
+    color: black;
+    background: white;
+}
+
+span{
+    color: pink;
+}
+
+.navbar a {
+    color: black;
+}
+
+.navbar .logo{
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.nav-links{
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.nav-links li{
+    margin: 0 30px;
+}
+
+a{
+    text-decoration: none;
+}
+
+ul{
+    list-style: none;
+}
+
+.Bstyle {
+    padding: 8px 15px;
+    background: #ff006e;
+    border-radius: 30px;
+    color: #f5f5f5;
+}
+
+.Bstyle a{
+    color: #f5f5f5;
+}
+
+/*Body*/
+
+.repository {
+    width: 100vw;
+    height: 100vh;
+    padding: 10%;
+    padding-top: 0;
+}
+
+.repository h1 {
+    position: relative;
+    text-align: center;
+    top: 25%;
+    margin-bottom: 150px;
+}
+
+.underline {
+    width: 10%;
+    height: 0.22em;
+    background: #303ef7;
+    margin: auto;
+    border-radius: 5px;
+    margin-top: 100px;
+}
+
+.x {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    grid-gap: 30px;
+    padding-top: 50px;
+}
+
+span1 {
+    font-weight: bold;
+    color: red;
+}
+
+/*web services*/
+
+.web-service {
+    text-align: center;
+    place-items: center;
+    padding-block: 25px;
+    padding-inline: 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    transition: transform 0.7s, background 0.7s;
+    display: grid;
+}
+
+.web-service a {
+    color: #000000;
+}
+
+.web-service i {
+    font-size: 35px;
+    margin-top: 10px;
+    color: pink;
+}
+
+.web-service h2 {
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.web-service:hover {
+    background: #fff;
+    transform: matrix(1.05, 0, 0, 1.05, 0, 0);
+}
+
+/*Footer*/
+
+.footer {
+    width: 100%;
+    height: 100px;
+    background: #290e74;
+    text-align: center;
+    padding-top: 8px;
+}
+
+.footer p{
+    color: #f5f5f5;
+    margin: 20px;
+}

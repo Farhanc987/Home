@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Helpline</title>
+    <link rel="stylesheet" href="helpline.css"/>
+</head>
+<body>
+    
+    <!--NavBar-->
+
+    <nav class="navbar">
+        <a href="Home.html" class="logo">Mental<span>Climb</span></a>
+        <ul class="nav-links">
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="Home.html#about_us">About Us</a></li>
+            <li><a href="Healthcare_services.html">Services</a></li>
+            <li><a href="DrChatbot.html">Chat assistant</a></li>
+            <li class="ctn"><a class="signInlink" href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <!--Body-->
+
+    <div class="segment">
+        <div class="repository">
+            <div class="content-segment">
+                <div class="title">
+                    <h1>HELP <span1>LINE</span1></h1>
+                </div>
+                <div class="body">
+                    <h3>What can we do</h3>
+                    <p>
+                        This page is to help young minds contact lines they feel they may need to contact,
+                        50% of mental health problems are established by age 14 and 75% by age 24. 10% of
+                        children and young people (aged 5-16 years) have a clinically diagnosable mental problem,
+                        yet 70% of children and adolescents who experience mental health problems have not had
+                        appropriate interventions at a sufficiently early age. It is in our best interest to
+                        ensure that you have readily available at any time if needed, help us and help yourself
+                        dont let yourself become a statistic.
+                    </p>
+                    <div class="button"> <a href="">Numbers 4 You</a></div>
+                </div>
+
+                <div class="rm-repository">
+
+                    <div class="repo1">
+                        <p>
+                            We provide 24/7 support to anyone in need, having someone to talk to can improve mental state for those who may not feel comfortable to speak to those around them,
+                            its important to release the built up tension by talking about your experiences to people that can support, and thats why we've provided the following numbers below
+                            <span2 class="rm-body">
+                                <br><br>
+                                National Suicide Prevention Helpline UK. - <a href="">0800 689 5652 </a>
+                                <br><br>
+                                The National Suicide Prevention Helpline UK. Offers a supportive listening service to anyone with thoughts of suicide. You can call the National Suicide Prevention
+                                Helpline UK on the number above (open 24/7). - 24/7 Including Christmas Day
+                                <br><br>
+                                Samaritans -  <a href="">0808 164 0123</a>
+                                <br><br>
+                                To talk about anything that is upsetting you, you can contact Samaritans 24 hours a day, 365 days a year. You can call 116 123 (free from any phone),ou can also call
+                                the Samaritans Welsh Language Line on above (7pm–11pm every day).
+                                <br><br>
+                                SANEline - <a href="">0300 304 7000</a>
+                                <br><br>
+                                SANEline is a national out-of-hours mental health helpline offering specialist emotional support, guidance and information to anyone affected by mental illness, including
+                                family, friends and carers. Open every day of the year from 4pm to 10pm on the number above
+                                <br><br>
+                                The Mix - <a href="">0808 808 4994</a>
+                                <br><br>
+                                The Mix is the UK’s leading support service for young people. We are here to help you take on any challenge you’re facing - from mental health to money, from homelessness
+                                to finding a job, from break-ups to drugs. Talk to us via our online community, on social, through our free, confidential helpline or our counselling service
+                                <br><br>
+                                Anxiety UK - <a href="">03444 775 774 </a>
+                                <br><br>
+                                We offer support, advice and information on all anxiety, stress and anxiety-based depression conditions. Our helpline services are open to anyone of any age, (parental consent
+                                is not required to call the helpline and you can read more about confidentiality below), with an interpretation service available to those who require it.
+                                <br><br>
+                                NAMI - <a href="">800-950-6264</a>
+                                <br><br>
+                                Coping with BPD can be very challenging. But if you, a family member or friend is struggling, there is help. NAMI is here to provide you with support and information about
+                                community resources for you and your family.
+                            </span2>
+                        </p>
+                        <span class="rm-btn" style="color:#8866ff;">Read More...</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="img-section">
+                <img src="Images/helplineMan.png" />
+            </div>
+
+        </div>
+    </div>
+
+    <!--Footer-->
+
+    <div class="footer">
+        <p>Duffield Ln, Staffordshire DE13 8SH | Phone: 01283 575303 | Email: MentalClimb@hotmail.com</p>
+        <p>Copyright © 2023 MentalClimb</p>
+    </div>
+
+    <!--JavaScript-->
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js'
+
+        // If you enabled Analytics in your project, add the Firebase SDK for Google Analytics
+        import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-analytics.js'
+
+        // Add Firebase products that you want to use
+        import { getAuth, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js'
+        import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js'
+
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAGr5TtXTukeQU7QcrDuvLjcN_ZfTyzSo0",
+            authDomain: "thought-journal-23ff8.firebaseapp.com",
+            databaseURL: "https://thought-journal-23ff8-default-rtdb.firebaseio.com",
+            projectId: "thought-journal-23ff8",
+            storageBucket: "thought-journal-23ff8.appspot.com",
+            messagingSenderId: "119645921234",
+            appId: "1:119645921234:web:7e110e23f790f57c55f20b",
+            measurementId: "G-MD548H48G4"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+
+        const signinBtn = document.getElementsByClassName(`signInlink`)[0]
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // user is logged in
+                signinBtn.innerHTML = `Log out`
+                signinBtn.href = ``
+            }
+        });
+
+        signinBtn.addEventListener('click', (e) => {
+            console.log(`logged out`);
+            if (signinBtn.innerText == `Log out`) {
+                signOut(auth).then(() => {
+                    // Sign-out successful.
+                    signinBtn.innerHTML = `Login`
+                    signinBtn.href = `Login.html`
+                }).catch((error) => {
+                    // An error happened.
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+
+                    alert(errorMessage)
+                });
+            }
+        })
+
+    </script>
+
+    <script src="helpline.js"></script>
+
+</body>
+</html>

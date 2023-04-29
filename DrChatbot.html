@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot</title>
+    <link rel="stylesheet" type="text/css" href="DrChatbot.css" />
+</head>
+<body>
+
+    <!--NavBar-->
+
+    <nav class="navbar">
+        <a href="Home.html" class="logo">Mental<span>Climb</span></a>
+        <ul class="nav-links">
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="Home.html#about_us">About Us</a></li>
+            <li><a href="Healthcare_services.html">Services</a></li>
+            <li><a href="DrChatbot.html">Chat assistant</a></li>
+            <li class="Bstyle"><a class="signInlink" href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <!--Body-->
+
+    <div id="repository">
+        <div class="overline"></div>
+        <div class="title">DR Chatbot</div>
+        <div class="underline"></div>
+        <div id="communication"></div>
+        <form id="post">
+            <input type="text" id="textbox" autocomplete="off" placeholder="what do you want to know about mental health?" required />
+            <button type="submit">
+                Send <i class="fa fa-paper-plane"></i>
+            </button>
+        </form>
+    </div>
+
+    <!--Footer-->
+
+    <div class="footer">
+        <p>Duffield Ln, Staffordshire DE13 8SH | Phone: 01283 575303 | Email: MentalClimb@hotmail.com</p>
+        <p>Copyright © 2023 MentalClimb</p>
+    </div>
+
+    <!--JavaScript-->
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js'
+
+        // If you enabled Analytics in your project, add the Firebase SDK for Google Analytics
+        import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-analytics.js'
+
+        // Add Firebase products that you want to use
+        import { getAuth, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js'
+        import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js'
+
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAGr5TtXTukeQU7QcrDuvLjcN_ZfTyzSo0",
+            authDomain: "thought-journal-23ff8.firebaseapp.com",
+            databaseURL: "https://thought-journal-23ff8-default-rtdb.firebaseio.com",
+            projectId: "thought-journal-23ff8",
+            storageBucket: "thought-journal-23ff8.appspot.com",
+            messagingSenderId: "119645921234",
+            appId: "1:119645921234:web:7e110e23f790f57c55f20b",
+            measurementId: "G-MD548H48G4"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+
+        const signinBtn = document.getElementsByClassName(`signInlink`)[0]
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // user is logged in
+                signinBtn.innerHTML = `Log out`
+                signinBtn.href = ``
+            }
+        });
+
+        signinBtn.addEventListener('click', (e) => {
+            console.log(`logged out`);
+            if (signinBtn.innerText == `Log out`) {
+                signOut(auth).then(() => {
+                    // Sign-out successful.
+                    signinBtn.innerHTML = `Login`
+                    signinBtn.href = `Login.html`
+                }).catch((error) => {
+                    // An error happened.
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+
+                    alert(errorMessage)
+                });
+            }
+        })
+
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.3/axios.min.js"></script>
+    <script src="DrChatbot.js"></script>
+
+</body>
+</html>

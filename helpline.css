@@ -1,0 +1,172 @@
+﻿*{
+    margin:0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+/*NavBar*/
+
+.navbar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 20px;
+    color: black;
+    background: white;
+}
+
+span{
+    color: pink;
+}
+
+.navbar a {
+    color: black;
+}
+
+.navbar .logo{
+    font-size: 2em;
+    font-weight: bold
+}
+
+.nav-links{
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.nav-links li{
+    margin: 0 30px;
+}
+
+a{
+    text-decoration: none;
+}
+
+ul{
+    list-style: none;
+}
+
+.ctn{
+    padding: 8px 15px;
+    background: #ff006e;
+    border-radius: 30px;
+    color: whitesmoke;
+}
+
+.ctn a{
+    color: whitesmoke;
+}
+
+/*Body*/
+
+.segment {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #ecf5ff;
+}
+
+.repository {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3em;
+    padding-top: 50px;
+}
+
+.content-segment {
+    display: inline-block; /*left*/
+    vertical-align: top;
+    width: 55%;
+}
+
+.img-section {
+    display: inline-block;  /*right*/
+    vertical-align: top;
+    direction: rtl;
+    margin-left: 61px;
+    margin-top: 7.4em;
+    width: 40%;
+}
+
+.content-segment .title {
+    font-size: 1.9rem;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+span1{
+    color: #ff006e;
+}
+
+.content-segment .body h3 {
+    margin-block-start: 20px;  /*top*/
+    color: black;
+    font-size: 22px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.content-segment .body p {
+    margin-block-start: 11px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.1em;
+    line-height: 1.525;
+}
+
+.content-segment .body .button {
+    margin-block-start: 33px;   
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.content-segment .body .button a{
+    color: #ffffff;
+    background-color: #ff006e;
+    padding-block: 15px;
+    padding-inline: 80px;
+    font-weight: bold;
+    font-size: 1.7em;
+    letter-spacing: 0.075em;
+}
+
+/*Read More*/
+
+.rm-repository {
+    display: grid;
+    grid-auto-flow: column;
+    color: #111;
+    row-gap: 1rem;
+}
+
+.repo1 {
+    padding-block: 2rem;
+    padding-inline: 2rem;
+    background-color: #fff;
+    line-height: 1.395;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, .1);
+}
+
+.rm-body {
+    display: none;
+}
+
+.rm-body--show {
+    display: inline;
+}
+
+/*Footer*/
+
+.footer {
+    width: 100%;
+    height: 100px;
+    background: #290e74;
+    text-align: center;
+    padding-top: 8px;
+}
+
+.footer p{
+    color: #f5f5f5;
+    margin: 20px;
+}
+

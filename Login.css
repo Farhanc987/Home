@@ -1,0 +1,134 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*NavBar*/
+
+.navbar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 20px;
+    color: whitesmoke;
+}
+
+span{
+    color: pink;
+}
+
+.navbar a {
+    color: whitesmoke;
+}
+
+.navbar .logo{
+    font-size: 2em;
+    font-weight: bold
+}
+
+.nav-links{
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.nav-links li{
+    margin: 0 30px;
+}
+
+a{
+    text-decoration: none;
+}
+
+ul{
+    list-style: none;
+}
+
+.ctn{
+    padding: 8px 15px;
+    background: #ff006e;
+    border-radius: 30px;
+    color: whitesmoke;
+}
+
+.ctn a{
+    color: whitesmoke;
+}
+
+/*Login*/
+
+.active {
+    color: #ff006e;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+body, html {
+    overflow-x: hidden;
+}
+
+header {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('./Images/background.jpg');
+    background-position: bottom;
+    background-size: 75%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.header-content {
+    margin-bottom: 240px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.header-content h2 {
+    font-size: 6vmin;
+}
+
+.line {
+    width: 250px;
+    height: 4px;
+    background: #ff006e;
+    margin: 10px auto;
+    border-radius: 5px;
+}
+
+.header-content h1 {
+    font-size: 7vmin;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.ctn {
+    padding: 8px 15px;
+    background: #ff006e;
+    border-radius: 30px;
+    color: whitesmoke;
+}
+
+.input {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: white;
+    background-clip: padding-box;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    border: 1px solid #000;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: var(--bs-border-radius);
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+

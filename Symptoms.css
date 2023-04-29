@@ -1,0 +1,168 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+/*NavBar*/
+
+.navbar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 20px;
+    color: black;
+    background: white;
+}
+
+span{
+    color: pink;
+}
+
+.navbar a {
+    color: black;
+}
+
+.navbar .logo{
+    font-size: 2em;
+    font-weight: bold
+}
+
+.nav-links{
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.nav-links li{
+    margin: 0 30px;
+}
+
+a{
+    text-decoration: none;
+}
+
+ul{
+    list-style: none;
+}
+
+.ctn{
+    padding: 8px 15px;
+    background: #ff006e;
+    border-radius: 30px;
+    color: whitesmoke;
+}
+
+.ctn a{
+    color: whitesmoke;
+}
+
+/*Body*/
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.dropdown {
+    margin-top: 100px;
+    margin-bottom: 10px;
+}
+
+body {
+    background: #ecf5ff;
+    color: #000000;
+}
+
+section {
+    font-family: 'quicksand', 'sans-serif';
+    min-height: 86vh;
+    max-width: 960px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 48px;
+    margin: 13px 0 0 144px;
+    padding-left: 9rem;
+    margin-bottom: 80px;
+
+}
+
+.Qand_container {
+    margin-bottom: 75px;
+}
+
+.QandA {
+    width: 100%;
+    max-width: 700px;
+    margin-top: 32px;
+    padding-bottom: 16px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+}
+
+p {
+    font-size: 20px;
+}
+
+.heading h3
+{
+    font-size: 1.8rem;
+
+}
+
+/*dropdown*/
+
+.dropdown .QandA .heading {
+    position: relative;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #000000;
+    cursor: pointer;
+}
+
+.dropdown .QandA .heading::before {
+    content: '+';
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    -webkit-transform: translateY(-60%);
+    transform: translateY(-60%);
+    font-size: 24px;
+}
+
+.dropdown .QandA .symptoms {
+    height: 0px;
+    transition-duration: 0.7s;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.dropdown .QandA.drop .symptoms {
+    height: 300px;
+}
+
+/*Footer*/
+
+.footer {
+    width: 100%;
+    height: 100px;
+    padding: 10px 80px;
+    background: #290e74;
+    text-align: center;
+}
+
+.footer p{
+    color: whitesmoke;
+    margin: 10px auto;
+}
